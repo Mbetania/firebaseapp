@@ -13,7 +13,7 @@ export const IndexRoutes = () => {
         <Route path='/' element={<ItemListContainer />}/>
           <Route path='welcome' element={<Welcome/>} />
           <Route path='category/:categoryId' element={<ItemListContainer mesagge='Bienvenido a nuestro catálogo'/>} />
-          <Route path='detail' element={<ItemDetailContainer/>} />
+          <Route path='detail/:categoryId' element={<ItemDetailContainer/>} />
       </Routes>
     </BrowserRouter>
   )

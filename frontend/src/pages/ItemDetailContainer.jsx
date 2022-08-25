@@ -9,17 +9,21 @@ export const ItemDetailContainer = () => {
     const [product, setProduct] = useState({})
     const [loading, setLoading] = useState(true)
 
-    const { id } = useParams()
+    const { categoryId } = useParams()
+    console.log(categoryId)
 
     useEffect(() => {
         const productsCollection = collection(db, 'items')
-        const refDoc = doc(productsCollection, id)
+        console.log(productsCollection)
+        const refDoc = doc(productsCollection, categoryId)
         getDoc(refDoc)
             .then((result) => {
                 setProduct({
-                    id: id;
+                    id: categoryId,
                     ...result.data(),
                 })
+                console.log(product)
+                console.log(productsCollection)
             })
             .catch((error) => {
                 console.log(error)
@@ -27,7 +31,7 @@ export const ItemDetailContainer = () => {
             .finally(() => {
                 setLoading(false)
             })
-    }, [id])
+    }, [categoryId])
     
 
     return (

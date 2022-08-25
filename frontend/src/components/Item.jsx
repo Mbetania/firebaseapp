@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export const Item = ({product}) => {
-    const {title, price, stock, image} = product
+    const {title, price, stock, image, id} = product
     console.log(product, 'aaa')
     return (   
         <div>
@@ -22,7 +22,7 @@ export const Item = ({product}) => {
                         </div>
                     ) : (
                         <div>
-                            <Link to={`/detail/${product.id}`}>
+                            <Link to={`/detail/${id}`}>
                                 <button>Ver Detalle</button>
                             </Link> 
                         </div>
