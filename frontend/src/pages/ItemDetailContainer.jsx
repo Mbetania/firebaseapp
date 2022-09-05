@@ -21,23 +21,23 @@ export const ItemDetailContainer = () => {
     }
     useEffect(() => {
         getInitial()
-    //     const productsCollection = collection(db, "items")
-    //     const refDoc = doc(productsCollection, id)
-    //     getDoc(refDoc)
-    //         .then((result) => {
-    //             // console.log(result.doc)
-    //             setProduct({
-    //                 ...result.doc,
-    //                 id: id,
-    //                 product,    
-    //             })
-    //         })
-    //         .catch((error) => {
-    //             // console.log(error)
-    //         })
-    //         .finally(() => {
-    //             setLoading(false)
-    //         })
+        const productsCollection = collection(db, "items")
+        const refDoc = doc(productsCollection, itemId)
+        getDoc(refDoc)
+            .then((result) => {
+                // console.log(result.doc)
+                setProduct({
+                    ...result.doc,
+                    id:itemId ,
+                    product,    
+                })
+            })
+            .catch((error) => {
+                // console.log(error)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
         }, [])
     
 
