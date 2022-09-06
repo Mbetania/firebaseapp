@@ -1,36 +1,36 @@
 import React, { useContext, useState } from 'react'
 import { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import { firebaseContext } from '../hooks/firebaseContext'
+import { ItemCount } from './ItemCount'
 
 
-export const ItemDetail = ({product}) => {
+export const ItemDetail = ({id, title, price, stock, description, category, image}) => {
     const [productAdded, setProductAdded] = useState(false)
-    // const { img, id, price, title, stock, description, category } = product
-    // console.log(product)
-    // const {title, price, stock, image,} = product
-    // const {addCartProduct} = useContext(firebaseContext)
-    
-    // const onAdd = (count) => {
-    //     addCartProduct({...product, qty: count})
-    //     // console.log(onAdd)
-    //     // console.log(count)
 
-    // }
-        // setProductAdded(true)
+    const { addCartProduct } = useContext(firebaseContext)
 
+    function handleAdd(quantity){
+        addCartProduct({id, title, price, stock, description, category, image}, quantity)
+        console.log(quantity)
+        setProductAdded(quantity)
+    }
         
     return (
         <div>
-             {/* <img src={product.img}/> */}
+            <img src={image}/>
             <div>
-                hola
-                {/* <h3>{product.category}</h3>
-                <h4>{product.title}</h4>
-                <p>$ <span>{product.price}</span></p>
-                <p>{product.description}</p>
-                <p>Stock disponible: {product.stock}</p>
-                <h5>{product.id}</h5> */}
+                <h3>{category}</h3>
+                <h4>{title}</h4>
+                <p>$ {price}</p>
+                <p>{description}</p>
+                <p>Stock disponible: {stock}</p>
+                <h5>{id}</h5>
+                {/* {productAdded === 0 ? */}
+                <ItemCount initial={1} stock={stock} onAdd={ handleAdd }/>
+            {/* :  */}
+            <NavLink  to='/cart'> Ir al carrito</NavLink> 
+            {/* } */}
             </div> 
         </div>
     )

@@ -8,7 +8,6 @@ export const ItemList = ({ productList }) => {
     return (
     <div className='container'>
         <div>
-            <span>dsadsadsa</span>
             {productList?.map((product) => (
                 <div key={product.id}>
                     <Item product={product}

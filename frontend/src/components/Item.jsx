@@ -6,7 +6,7 @@ export const Item = ({product}) => {
     // // console.log(product, 'aaa')
     return (   
         <div>
-            <img src={product.img}/>
+            <img src={product.image}/>
             <div>
                 <h5>{product.title}</h5>
                 <p>
@@ -15,7 +15,7 @@ export const Item = ({product}) => {
                 <p>
                     stock: <span>{product.stock}</span>
                 </p>
-                <p>category: <span>{product.category}</span></p>
+                <p>category: <span>{product.category}</span> </p>
                 <div>
                     {product.stock === 0 ? (
                         <div>

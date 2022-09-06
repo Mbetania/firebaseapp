@@ -2,53 +2,64 @@ import React from 'react'
 import { useState } from 'react'
 import { createContext } from 'react'
 
-export const firebaseContext = createContext()
-    const {FirebaseProvider} = firebaseContext
+export const firebaseContext = createContext([])
 
-export const CartCustomProvider = ({children}) =>{
+export function CartCustomProvider({children}){
     const [productsCart, setProductsCart] = useState([])
-    const [qtyProducts, setQtyProducts] = useState(0)
-    const [totalProducts, setTotalProducts] = useState(0)
-
+    let copyCart = [...productsCart]
     
     
     
-    const addCartProduct = (product) => {
+    function addCartProduct(product, quantity){
         if ( isInCart(product.id)) {
-            const found = productsCart.find ((product) => product.id === product.id)
-            const index = productsCart.indexOf(found)
-            const aux = [...productsCart]
-            aux[index].qty += product.qty
-            setProductsCart(aux)
+            setProductsCart(productsCart.map(prodCart => {
+                return prodCart.id === product.id ? {...prodCart, quantity: prodCart.quantity + quantity} :prodCart
+            }))
         } else{
-            setProductsCart([...productsCart, product])
+            setProductsCart([...productsCart, { ...product, quantity: quantity}])
         }
         
     }
     
-    const isInCart = (id) => {
-        return productsCart.some((productCart) => productCart.id === id)
+    function isInCart(id) {
+        return productsCart.some((prodCart) => prodCart.id === id)
+    }
+
+    function totalPrice(){
+        let total = 0;
+        productsCart.map((product) => total += product.price * product.quantity);
+        return total;
+    };
+
+    function totalQuantity() {
+        let quantityItem = 0;
+        productsCart.map((product) => quantityItem += product.quantity);
+        return quantityItem;
+    }
+
+    function removeItem() {
+        const indexItem = copyCart.indexOf()
+        copyCart.splice(indexItem, 1)
+        setProductsCart(copyCart)
     }
 
     const clear = () => {
-        setProductsCart([])
-        setQtyProducts(0)
-        setTotalProducts(0)
 
 }
 
     return (
-        <FirebaseProvider 
+        <firebaseContext.Provider 
         value={{
             productsCart, 
             setProductsCart, 
             addCartProduct, 
             isInCart, 
             clear,
-            qtyProducts,
-            totalProducts
+            totalPrice,
+            totalQuantity,
+            removeItem
         }}>
             {children}
-        </FirebaseProvider>
+        </firebaseContext.Provider>
     )
 }
