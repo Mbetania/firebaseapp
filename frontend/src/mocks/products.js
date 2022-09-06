@@ -1,4 +1,4 @@
-export const dataList = [
+const dataList = [
     {
         id: 7,
         title: "Cuadro #1",
@@ -49,18 +49,19 @@ export const dataList = [
     },
 ];
 
-export const getDatosMock = () =>{
-    return new Promise((resolve) => {
-        setTimeout(() =>{
-            resolve(dataList)
-        }, 2000)
-    })
-}
+// export const getDatosMock = () =>{
+//     return new Promise((resolve) => {
+//         setTimeout(() =>{
+//             resolve(dataList)
+//         }, 2000)
+//     })
+// }
 
-export const getProductsById = (itemId) =>{
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(dataList.find(prod => prod.id === Number(itemId)))
-        },2000)
-    })
-}
+// export const getProductsById = (itemId) =>{
+//     return new Promise((resolve) => {
+//         setTimeout(() => {
+//             resolve(dataList.find(prod => prod.id === Number(itemId)))
+//         },2000)
+//     })
+// }
+export default dataList

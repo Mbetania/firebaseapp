@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
-// import products from './mocks/products'
+import dataList from './mocks/products'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,17 +17,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export  const db = getFirestore(app);
 
-// export async function saveProductsFirebase(){
-    // collectionMovies yo le doy nombre??
-    // const items = collection(db, "items")
-    // const respuesta = await addDoc()
+export async function saveProductsFirebase(){
+    const itemsCollection = collection(db, "items")
     //llama a itemsData (array base de datos mock) 
-        // for(let item of products){
+    for(let item of dataList){
+        const docref = await addDoc(itemsCollection, item)
+        console.log('documento creado con id', docref.id)
     //  const docref = await addFoc(items, item)
     //// console.log('doc creado con', docref.id)
-    //}
+    }
 
-// }
+}
 
-// export default db
+export default db
 
