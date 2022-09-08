@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { ItemDetail } from '../components/ItemDetail'
+import { ItemDetail } from '../components/items/ItemDetail'
 import { db } from '../firebase'
 import { doc, getDocs, collection, getDoc } from "firebase/firestore"
 import { getProductsById } from '../mocks/products'
@@ -78,8 +78,8 @@ export const ItemDetailContainer = () => {
             key={product.id}
             id={product.id}
             title={product.title}
-            category={product.category}
-            image={product.image}
+            genre={product.genre}
+            img={product.img}
             stock={product.stock}
             description={product.description}
             price={product.price}

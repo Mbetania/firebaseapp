@@ -6,13 +6,13 @@ export const ItemList = ({ productList }) => {
     // // console.log('acaaaa')
     
     return (
-    <div className='container'>
-        <div>
+    <div className='row'>
+        <div className='col-3'>
             {productList?.map((product) => (
-                <div key={product.id}>
-                    <Item product={product}
-                    
-                    />
+                <div className='col-8' key={product.id}>
+                    <div className='row'>
+                        <Item product={product}/>
+                    </div>
                 </div>
             ))}
         </div>

@@ -12,9 +12,11 @@ export const NavBar = () => {
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div className="navbar-nav fs-5">
-                    <NavLink activeclassname='active' to='/category/vasos' className="nav-link active" >vasos</NavLink>
-                    <NavLink to='/category/Cuadros' className="nav-link" >cuadros</NavLink>
-                    <NavLink to='/category/clothing' className="nav-link" >clothing</NavLink>
+                    <NavLink activeclassname='active' to='/category/Romance' className="nav-link active" >Romance</NavLink>
+                    <NavLink to='/category/Drama' className="nav-link" >Drama</NavLink>
+                    <NavLink to='/category/Action' className="nav-link" >Action</NavLink>
+                    <NavLink to='/category/Comedy' className="nav-link" >Comedy</NavLink>
+                    <NavLink to='/cart' className="nav-link" >cart</NavLink>
                 </div>
             </div>
         </nav>

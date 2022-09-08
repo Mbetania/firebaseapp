@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const CartItems = ({ category, title, stock, price,removeProductCart, image,quantity, description, id }) => {
+export const CartItems = ({ category, title, stock, price,removeProductCart, img,quantity, description, id }) => {
     return (
         <>
             <div>
-                <img src={image} />
+                <img src={img} />
             </div>
             <div>
                 <h3>{title}</h3>
