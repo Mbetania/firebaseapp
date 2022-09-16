@@ -8,7 +8,7 @@ import { ItemCount } from '../ItemCount'
 export const ItemDetail = ({id, title, price, stock, description, genre, img, product}) => {
 
     useEffect(() => {
-    console.log(title)
+    console.log(product)
     }, [])
     
     const [productAdded, setProductAdded] = useState(false)
@@ -27,12 +27,12 @@ export const ItemDetail = ({id, title, price, stock, description, genre, img, pr
                 <img src={img}/>
             </div>
             <div className='card-detail'>
-                <h3>{product.genre}</h3>kk
-                <h4>{product.title}</h4>
-                <p>$ {product.price}</p>
-                <p>{product.description}</p>
-                <p>Stock disponible: {product.stock}</p>
-                <h5>{product.id}</h5>
+                <h3>{genre}</h3>kk
+                <h4>{title}</h4>
+                <p>$ {price}</p>
+                <p>{description}</p>
+                <p>Stock disponible: {stock}</p>
+                <h5>{id}</h5>
                 {/* {productAdded === 0 ? */}
                 <ItemCount initial={1} stock={stock} onAdd={ handleAdd }/>
             {/* :  */}

@@ -20,7 +20,7 @@ export const ItemDetailContainer = () => {
 
             getDoc(docRef).then(snapshot => {
                 resolve(
-                    { ...snapshot.data(), id: snapshot.id,  }
+                    { ...snapshot.data(), id: snapshot.id, }
                 )
             })
         })
@@ -31,11 +31,7 @@ export const ItemDetailContainer = () => {
         getProductById((id))
             .then((respuesta) => {
                 console.log(respuesta)
-                setProduct({
-                    ...respuesta.doc,
-                    id: id,
-                    product,
-                })
+                setProduct(respuesta)
                 console.log(respuesta)
                 setLoading(false)
             })
@@ -73,15 +69,13 @@ export const ItemDetailContainer = () => {
         <div>
             {/* {product ? <>carregando o jogo...</> : */}
             <ItemDetail
-                product={product}
-                // key={product.id}
-                // id={product.id}
-                // title={product.title}
-                // genre={product.genre}
-                // img={product.img}
-                // stock={product.stock}
-                // description={product.description}
-                // price={product.price}
+
+                id={product.id}
+                title={product.title}
+                price={product.price}
+                img={product.img}
+                category={product.genre}
+                stock={product.stock}
             />
             {/* }  */}
         </div>
