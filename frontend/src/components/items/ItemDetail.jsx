@@ -5,18 +5,16 @@ import { firebaseContext } from '../../hooks/firebaseContext'
 import { ItemCount } from '../ItemCount'
 
 
-export const ItemDetail = ({id, title, price, stock, description, genre, img, product}) => {
+export const ItemDetail = ({id, title, price, stock, genre, img, product}) => {
 
-    useEffect(() => {
-    console.log(product)
-    }, [])
+    
     
     const [productAdded, setProductAdded] = useState(false)
 
     const { addCartProduct } = useContext(firebaseContext)
 
     function handleAdd(quantity){
-        addCartProduct({id, title, price, stock, description, genre, img}, quantity)
+        addCartProduct({id, title, price, stock, genre, img}, quantity)
         console.log(quantity)
         setProductAdded(quantity)
     }
@@ -30,7 +28,6 @@ export const ItemDetail = ({id, title, price, stock, description, genre, img, pr
                 <h3>{genre}</h3>kk
                 <h4>{title}</h4>
                 <p>$ {price}</p>
-                <p>{description}</p>
                 <p>Stock disponible: {stock}</p>
                 <h5>{id}</h5>
                 {/* {productAdded === 0 ? */}

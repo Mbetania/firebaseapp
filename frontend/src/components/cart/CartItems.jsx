@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const CartItems = ({ category, title, stock, price,removeProductCart, img,quantity, description, id }) => {
+export const CartItems = ({ category, title, stock, price,removeProductCart, img,quantity, id }) => {
     return (
         <>
             <div>

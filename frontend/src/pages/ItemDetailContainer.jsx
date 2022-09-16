@@ -32,7 +32,6 @@ export const ItemDetailContainer = () => {
             .then((respuesta) => {
                 console.log(respuesta)
                 setProduct(respuesta)
-                console.log(respuesta)
                 setLoading(false)
             })
             .catch((error) => {
@@ -40,9 +39,6 @@ export const ItemDetailContainer = () => {
             })
     }, [])
 
-    useEffect(() => {
-        console.log(product)
-    }, [product])
 
 
     // getInitial()
@@ -74,8 +70,9 @@ export const ItemDetailContainer = () => {
                 title={product.title}
                 price={product.price}
                 img={product.img}
-                category={product.genre}
+                genre={product.genre}
                 stock={product.stock}
+
             />
             {/* }  */}
         </div>

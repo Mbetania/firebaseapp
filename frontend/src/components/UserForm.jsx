@@ -9,47 +9,51 @@ import { firebaseContext } from '../hooks/firebaseContext';
 
 
 function UserForm({ productsCart }) {
-
     const { totalPrice } = useContext(firebaseContext)
+
 
     const [userData, setUserData] = useState({
         name: "",
         email: "",
         telefono: "",
-    })
+    });
 
-    let navigate = useNavigate()
 
-    const [orderFirebase, setOrderFirebase] = useState(false)
-    // ({
-    // id: '',
-    // complete: false,
-    // })
+    let navigate = useNavigate();
+    const [orderFirebase, setOrderFirebase] = useState({
+        
+        id: '',
+        complete: false,
+    });
 
-    let total = 0
+    let total = 0;
     productsCart.forEach((item) => {
-        total += item.price * item.quantity
-    })
+        total += item.price * item.quantity;
+    });
 
     const ordenDeCompra = {
         buyer: { ...userData },
         items: [...productsCart],
-        total: totalPrice(),
+        total: total,
         date: new Date,
     }
 
     async function handleSubmit(e) {
         e.preventDefault()
+        try {
+            console.log(ordenDeCompra)
+            const collectionRef = collection(db, "orders");
+            const order = await addDoc(collectionRef, ordenDeCompra);
+            setOrderFirebase({ id: order.id, complete: true });
+            
+        } catch (error) {
+            console.log(error)
+            
+        }
 
-        // const collectionRef = collection(db, 'orders')
-        // const docRef = await addDoc(collectionRef, ordenDeCompra)
-        // setOrderFirebase(docRef.id)
-            setOrderFirebase(userData)
-            console.log(userData, productsCart)
-        // ({id: order.id, complete: true})
-         //se puede leer y utilizar id: docRef.id
-        navigate(`/`)
-        
+        //se puede leer y utilizar id: docRef.id
+        // navigate(`/`)
+
         // navigate(`/${docRef.id}`)
         //puedo crear la navegación a otro componente para cerrar la venta
         // ? usar mismo metodo para el boton de vaciar elcarrito
@@ -57,46 +61,38 @@ function UserForm({ productsCart }) {
     }
 
     function inputChangeHandler(e) {
-        const input = e.target
+        const input = e.target;
 
-        const value = input.value
-        const inputName = input.name
+        const value = input.value;
+        const inputName = input.name;
 
-        let copyUserData = { ...userData }
+        let copyUserData = { ...userData };
 
-        copyUserData[inputName] = value
-        setUserData(copyUserData)
+        copyUserData[inputName] = value;
+        setUserData(copyUserData);
     }
 
-    function handleReset(e) {
+    function handleReset(evt) {
         setUserData({
             name: "",
             email: "",
-            telefono: ""
-        })
+            telefono: "",
+        });
     }
 
-    function reset(e) {
+    // function reset(e) {
 
-    }
+    // }
 
     if (orderFirebase.complete === true) {
         return (
             <div>
-                <h1>Gracias por tu compra</h1>
+                <h1>Gracias por tu compra!</h1>
                 <p>El id de seguimiento de tu compra es: {orderFirebase.id}</p>
             </div>
-        )
+        );
     }
-    if (orderFirebase) {
-        return (
-            <div>
-                <h1>Gracias por tu compra</h1>
-                <p>El id de seguimiento es: {orderFirebase}</p>
-            </div>
 
-        )
-    }
     return (
         <div>
             <form onReset={handleReset} onSubmit={handleSubmit}>
@@ -137,7 +133,7 @@ function UserForm({ productsCart }) {
                     <Button type="submit" onTouch={handleSubmit}>
                         Finalizar compra
                     </Button>
-                    <Button type='reset' onTouch={reset}>Vaciar carrito</Button>
+                    <Button type="reset" >Vaciar carrito</Button>
                 </div>
             </form>
         </div>

@@ -25,7 +25,7 @@ const getProductsDBbyCategory = (category) => {
     return new Promise((resolve) => {
         const productsCollectionRef = collection(db, 'items')
 
-        const q = query(productsCollectionRef, where('genre', '==', category))
+        const q = query(productsCollectionRef, where("genre", "==", category));
 
         getDocs(q)
         .then((snapshot) => {
@@ -55,6 +55,9 @@ export const ItemListContainer = ({ mesagge }) => {
         getProductsDBbyCategory()
         .then((resp) => {
             setProductList(resp)
+        })
+        .catch((error) => {
+            console.log(error)
         })
     }, [])
 

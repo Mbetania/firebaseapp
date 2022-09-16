@@ -7,15 +7,14 @@ import { CartCustomProvider } from '../hooks/firebaseContext'
 import  CartView  from '../components/cart/CartView'
 import { NavBar } from '../components/NavBar'
 
-import { saveProductsFirebase } from '../firebase'
 import { Search } from '../components/search/Search'
-const clientRoutes = 'firebase'
+import { saveProductsFirebase } from '../firebase'
 //trae la funcion creada en button, calbback saveProductsFirebase} from firebase
 export const IndexRoutes = () => {
   return (
     <BrowserRouter>
     <CartCustomProvider>
-    {/* <button onClick={saveProductsFirebase}>ALGO</button> */}
+    <button onClick={saveProductsFirebase}>ALGO</button>
     <NavBar/>
     <Search/>
       <Routes>

@@ -17,17 +17,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export  const db = getFirestore(app);
 
-// export async function saveProductsFirebase(){
-//     const itemsCollection = collection(db, "items")
+export async function saveProductsFirebase(){
+    const itemsCollection = collection(db, "items")
 //     //llama a itemsData (array base de datos mock) 
-//     for(let item of dataList){
-//         const docref = await addDoc(itemsCollection, item)
-//         console.log('documento creado con id', docref.id)
+    for(let item of dataList){
+        const docref = await addDoc(itemsCollection, item)
+        console.log('documento creado con id', docref.id)
     //  const docref = await addFoc(items, item)
     //// console.log('doc creado con', docref.id)
-    //}
+    }
 
-// }
+}
 
 export default db
 
