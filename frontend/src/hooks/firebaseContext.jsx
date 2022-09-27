@@ -27,7 +27,7 @@ export function CartCustomProvider({children}){
 
     function totalPrice(){
         let total = 0;
-        productsCart.map((product) => total += product.price * product.quantity);
+        productsCart.map((product) => total += Number(product.price) * Number(product.quantity));
         return total;
     };
 

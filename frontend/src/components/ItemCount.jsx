@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
-
+import { useContext } from 'react'
+import { firebaseContext } from '../hooks/firebaseContext'
 export const ItemCount = ({ onAdd, initial, stock }) => {
-    const [clicks, setClicks] = useState(initial)
+
+    const { productsCart } = useContext(firebaseContext)
+
     const [count, setCount] = useState(initial)
     const handlerClickAdd = () => {
         if (count<stock){
@@ -24,7 +27,7 @@ export const ItemCount = ({ onAdd, initial, stock }) => {
             
             <button className='btn btn-primary' onClick={handlerClickAdd}> + </button>
             <span>{count}</span>
-            <button className='btn btn-primary' onClick={handlerClickSubtrack}> - </button>
+            <button className='btn' onClick={handlerClickSubtrack}> - </button>
             <button className='btn btn-primary'  onClick={ resetCounter }>Reset</button>
             <button className='btn btn-primary'  onClick={handleClicks} >Agregar al carrito</button>
         </>

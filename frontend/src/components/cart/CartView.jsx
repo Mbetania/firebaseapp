@@ -32,10 +32,10 @@ function CartView(id) {
                                 />
                             )
                         })}
-                        <div>
+                        {/* <div>
                             <p>Subtotal: ${totalPrice()} + IVA</p>
                             <p>Total: ${totalPrice() * 1.21} + FINAL</p>
-                        </div>
+                        </div> */}
                     </>
                 )}
             </div>

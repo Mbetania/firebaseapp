@@ -16,7 +16,7 @@ export const Item = ({product}) => {
                 <p>
                     stock: <span>{product.stock}</span>
                 </p>
-                <p>category: <span>{product.category}</span></p>
+                {/* <p>category: <span>{product.category}</span></p> */}
                 <div>
                     {product.stock === 0 ? (
                         <div>

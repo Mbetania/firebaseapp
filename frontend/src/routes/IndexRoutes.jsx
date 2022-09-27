@@ -14,7 +14,7 @@ export const IndexRoutes = () => {
   return (
     <BrowserRouter>
     <CartCustomProvider>
-    <button onClick={saveProductsFirebase}>ALGO</button>
+    {/* <button onClick={saveProductsFirebase}>ALGO</button> */}
     <NavBar/>
     <Search/>
       <Routes>

@@ -21,11 +21,11 @@ const getProductsDB = () => {
     })
 }
 
-const getProductsDBbyCategory = (category) => {
+const getProductsDBbyCategory = (categoryId) => {
     return new Promise((resolve) => {
         const productsCollectionRef = collection(db, 'items')
 
-        const q = query(productsCollectionRef, where("genre", "==", category));
+        const q = query(productsCollectionRef, where("genre", "==", categoryId));
 
         getDocs(q)
         .then((snapshot) => {
@@ -39,9 +39,9 @@ const getProductsDBbyCategory = (category) => {
 
 export const ItemListContainer = ({ mesagge }) => {
     const [productList, setProductList] = useState([])
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     
-
+    const { categoryId } = useParams()
 
     useEffect(() => {
         getProductsDB()
@@ -52,24 +52,24 @@ export const ItemListContainer = ({ mesagge }) => {
             console.log(error)
         })
 
-        getProductsDBbyCategory()
+        getProductsDBbyCategory(categoryId)
         .then((resp) => {
+            console.log(resp)
             setProductList(resp)
         })
         .catch((error) => {
             console.log(error)
         })
-    }, [])
+    }, [categoryId])
 
     
     return (
         <div className=''>
-            <ItemList productList={productList}/>
-            {loading ? (
-                <span>Loading...</span>
+            {loading  ? (
+                <span>Loading</span>
             ) : (
                 <>
-                    <ItemList productList={productList} />
+                    <ItemList productList={productList} /> 
                 </>
             )} 
         </div>

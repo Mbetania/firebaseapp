@@ -6,11 +6,11 @@ export const ItemList = ({ productList }) => {
     // // console.log('acaaaa')
     
     return (
-    <div className='row'>
-        <div className='col-3'>
+    <div className=''>
+        <div className=''>
             {productList?.map((product) => (
                 <div className='col-8' key={product.id}>
-                    <div className='row'>
+                    <div className=''>
                         <Item product={product}/>
                     </div>
                 </div>
