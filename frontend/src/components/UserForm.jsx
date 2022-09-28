@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router';
 import { getDocs, collection, addDoc, query, where, writeBatch, documentId } from "firebase/firestore";
 import db from '../firebase'
 import Button from './Button';
 import { useContext } from 'react';
 import { firebaseContext } from '../hooks/firebaseContext';
 
-
+import { BiRefresh } from 'react-icons/bi'
 
 function UserForm({ productsCart }) {
-    const { totalPrice } = useContext(firebaseContext)
-
+    const { setProductsCart } = useContext(firebaseContext)
+    const [ memory, setMemory ] = useState([])
 
     const [userData, setUserData] = useState({
         name: "",
@@ -19,7 +18,6 @@ function UserForm({ productsCart }) {
     });
 
 
-    let navigate = useNavigate();
     const [orderFirebase, setOrderFirebase] = useState({
         
         id: '',
@@ -41,7 +39,6 @@ function UserForm({ productsCart }) {
     async function handleSubmit(e) {
         e.preventDefault()
         try {
-            console.log(ordenDeCompra)
             const collectionRef = collection(db, "orders");
             const order = await addDoc(collectionRef, ordenDeCompra);
             setOrderFirebase({ id: order.id, complete: true });
@@ -93,6 +90,15 @@ function UserForm({ productsCart }) {
         );
     }
 
+    const resetCart = () => {
+        setMemory(productsCart)
+        setProductsCart([])
+    }
+
+    const regret = () => {
+        setProductsCart(memory)
+    }
+
     return (
         <div>
             <form onReset={handleReset} onSubmit={handleSubmit}>
@@ -129,11 +135,12 @@ function UserForm({ productsCart }) {
                         required
                     />
                 </div>
-                <div>
+                <div className='d-flex flex-row'>
                     <Button type="submit" onTouch={handleSubmit}>
                         Finalizar compra
                     </Button>
-                    <Button type="reset" >Vaciar carrito</Button>
+                    <Button onTouch={resetCart} type="button">Vaciar carrito</Button>
+                    {memory.length> 0 && <BiRefresh onClick={()=>regret()} size='2rem'/> }
                 </div>
             </form>
         </div>

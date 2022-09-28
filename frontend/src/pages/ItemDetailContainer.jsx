@@ -30,7 +30,6 @@ export const ItemDetailContainer = () => {
     useEffect(() => {
         getProductById((id))
             .then((respuesta) => {
-                console.log(respuesta)
                 setProduct(respuesta)
                 setLoading(false)
             })
@@ -65,14 +64,13 @@ export const ItemDetailContainer = () => {
         <div>
             {/* {product ? <>carregando o jogo...</> : */}
             <ItemDetail
-
+                product={product}
                 id={product.id}
                 title={product.title}
                 price={product.price}
                 img={product.img}
                 genre={product.genre}
                 stock={product.stock}
-
             />
             {/* }  */}
         </div>

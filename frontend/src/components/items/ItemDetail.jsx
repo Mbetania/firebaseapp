@@ -1,15 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { useEffect } from 'react'
 import { Link, NavLink, useParams } from 'react-router-dom'
 import { firebaseContext } from '../../hooks/firebaseContext'
 import { ItemCount } from '../ItemCount'
 
 
 export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => {
-
-
-
-    const [productAdded, setProductAdded] = useState(false)
 
     const { addCartProduct, isInCart } = useContext(firebaseContext)
 
@@ -21,11 +16,10 @@ export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => 
             product: product,
             img: img,
             price: price,
-            quantity: quantity,
+            quantity
         }
-        isInCart(id)
-        addCartProduct(itemToCart)
-        console.log(quantity)
+            isInCart(id)
+            addCartProduct(itemToCart,quantity)
     }
 
     return (
@@ -34,7 +28,7 @@ export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => 
                 <img src={img} />
             </div>
             <div className='card-detail'>
-                <h3>{genre}</h3>kk
+                <h3>{genre}</h3>
                 <h4>{title}</h4>
                 <p>$ {price}</p>
                 <p>Stock disponible: {stock}</p>

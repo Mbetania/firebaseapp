@@ -5,10 +5,17 @@ import { CartItems } from './CartItems'
 import UserForm from '../UserForm'
 
 function CartView(id) {
-    const { productsCart, removeItem, totalPrice } = useContext(firebaseContext)
+    const { productsCart, removeItem, qtyProdCart } = useContext(firebaseContext)
     function removeProductCart() {
         removeItem(id)
     }
+
+    const totalValue = () => {
+        let acumulated = 0
+        productsCart.map(( { price } )=>acumulated += price)
+        return acumulated
+    }
+
     return (
         <>
             <div>
@@ -32,14 +39,13 @@ function CartView(id) {
                                 />
                             )
                         })}
-                        {/* <div>
-                            <p>Subtotal: ${totalPrice()} + IVA</p>
-                            <p>Total: ${totalPrice() * 1.21} + FINAL</p>
-                        </div> */}
+                        <div>
+                            <p>Subtotal: ${totalValue()} + IVA</p>
+                            <p>Total: ${totalValue() * 1.21} + FINAL</p>
+                        </div>
                     </>
                 )}
             </div>
-            <div></div>
             <UserForm productsCart={productsCart} />
         </>
     )

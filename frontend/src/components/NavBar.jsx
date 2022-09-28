@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { MdLocalFlorist } from 'react-icons/md'
+import { FcCloseUpMode } from 'react-icons/fc'
 import { firebaseContext } from '../hooks/firebaseContext'
+import { CartWidget } from './cart/CartWidget'
 
 export const NavBar = () => {
     const { productsCart } = useContext(firebaseContext)
@@ -15,7 +16,7 @@ export const NavBar = () => {
                     <NavLink to='/category/Drama' className="nav-link" >Drama</NavLink>
                     <NavLink to='/category/Action' className="nav-link" >Action</NavLink>
                     <NavLink to='/category/Comedy' className="nav-link" >Comedy</NavLink>
-                    <NavLink to='/cart' className="nav-link" >{productsCart.length > 0 && <MdLocalFlorist/>}</NavLink>
+                    <NavLink to='/cart' className="nav-link" >{productsCart.length > 0 && <CartWidget/>}</NavLink>
                 </div>
             </div>
         </nav>

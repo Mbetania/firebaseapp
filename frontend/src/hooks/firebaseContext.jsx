@@ -27,15 +27,10 @@ export function CartCustomProvider({children}){
 
     function totalPrice(){
         let total = 0;
-        productsCart.map((product) => total += Number(product.price) * Number(product.quantity));
+        productsCart.map((product) => total += (product.price) * (product.quantity));
         return total;
     };
 
-    function totalQuantity() {
-        let quantityItem = 0;
-        productsCart.map((product) => quantityItem += product.quantity);
-        return quantityItem;
-    }
 
     function removeItem() {
         const indexItem = copyCart.indexOf()
@@ -43,9 +38,6 @@ export function CartCustomProvider({children}){
         setProductsCart(copyCart)
     }
 
-    const clear = () => {
-
-}
 
     return (
         <firebaseContext.Provider 
@@ -54,9 +46,7 @@ export function CartCustomProvider({children}){
             setProductsCart, 
             addCartProduct, 
             isInCart, 
-            clear,
             totalPrice,
-            totalQuantity,
             removeItem
         }}>
             {children}

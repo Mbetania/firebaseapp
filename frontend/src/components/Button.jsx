@@ -10,7 +10,7 @@ function Button({ text, type, onTouch, children }) {
     };
 
     return (
-        <button type={type} onClick={onTouch} style={btnstyle} className="btn">
+        <button type={type} onPress={onTouch} onClick={onTouch} style={btnstyle} className="btn">
             {text || children}
         </button>
     );

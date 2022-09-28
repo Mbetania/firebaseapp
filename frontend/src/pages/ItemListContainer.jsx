@@ -54,7 +54,6 @@ export const ItemListContainer = ({ mesagge }) => {
 
         getProductsDBbyCategory(categoryId)
         .then((resp) => {
-            console.log(resp)
             setProductList(resp)
         })
         .catch((error) => {
