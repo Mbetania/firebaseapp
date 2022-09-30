@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import { db } from '../firebase'
 import { getDocs, collection, query, where, snapshotEqual } from 'firebase/firestore'
-// import { DataList, getDatosMock } from '../mocks/products'
-
+import RingLoader from "react-spinners/RingLoader"
 
 const getProductsDB = () => {
     return new Promise((resolve) => {
@@ -39,17 +38,25 @@ const getProductsDBbyCategory = (categoryId) => {
 
 export const ItemListContainer = ({ mesagge }) => {
     const [productList, setProductList] = useState([])
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     
     const { categoryId } = useParams()
 
+  
+    
     useEffect(() => {
+        setLoading(true)
+
         getProductsDB()
         .then((respuesta) => {
             setProductList(respuesta)
         })
         .catch((error) =>{
             console.log(error)
+            setLoading(false)
+        })
+        .finally(() => {
+            setLoading(false)
         })
 
         getProductsDBbyCategory(categoryId)
@@ -65,7 +72,7 @@ export const ItemListContainer = ({ mesagge }) => {
     return (
         <div className=''>
             {loading  ? (
-                <span>Loading</span>
+                <RingLoader className='' color='#5189dd' loading={loading}  size={100} />
             ) : (
                 <>
                     <ItemList productList={productList} /> 

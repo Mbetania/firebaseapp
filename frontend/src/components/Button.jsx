@@ -1,4 +1,3 @@
-import "../styles/components/button.css";
 
 function Button({ text, type, onTouch, children }) {
     const btnstyle = {

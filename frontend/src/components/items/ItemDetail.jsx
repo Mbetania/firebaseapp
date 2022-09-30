@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Link, NavLink, useParams } from 'react-router-dom'
 import { firebaseContext } from '../../hooks/firebaseContext'
 import { ItemCount } from '../ItemCount'
+import styles from '../../styles/cards/cards.module.sass'
+
 
 
 export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => {
@@ -23,9 +25,9 @@ export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => 
     }
 
     return (
-        <div className='card'>
-            <div className='card-img'>
-                <img src={img} />
+        <div className='card d-flex align-items-center'>
+            <div className={`mb-4 ${styles.cards}`}>
+                <img src={img} className={`${styles.img}`}/>
             </div>
             <div className='card-detail'>
                 <h3>{genre}</h3>

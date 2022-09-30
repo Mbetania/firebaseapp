@@ -100,7 +100,7 @@ function UserForm({ productsCart }) {
     }
 
     return (
-        <div>
+        <div className=''>
             <form onReset={handleReset} onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Nombre</label>
@@ -135,7 +135,7 @@ function UserForm({ productsCart }) {
                         required
                     />
                 </div>
-                <div className='d-flex flex-row'>
+                <div className=''>
                     <Button type="submit" onTouch={handleSubmit}>
                         Finalizar compra
                     </Button>

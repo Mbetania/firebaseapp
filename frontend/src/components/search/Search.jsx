@@ -1,5 +1,5 @@
 import React from 'react'
-import searchStyle from '../../styles/search/search.module.scss'
+import searchStyle from '../../styles/search/search.module.sass'
 
 export const Search = () => {
 

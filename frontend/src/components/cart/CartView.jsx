@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { firebaseContext } from '../../hooks/firebaseContext'
 import { CartItems } from './CartItems'
 import UserForm from '../UserForm'
+import styles from '../../styles/cards/cards.module.sass'
+
 
 function CartView(id) {
     const { productsCart, removeItem, qtyProdCart } = useContext(firebaseContext)
@@ -18,7 +20,7 @@ function CartView(id) {
 
     return (
         <>
-            <div>
+            <div className={` mb-4 ${styles.cards}`}>
                 <h1>Tu carrito</h1>
                 {productsCart.length === 0 ? (
                     <div>

@@ -6,11 +6,11 @@ export const Item = ({product}) => {
     // // console.log(product, 'aaa')
     
     return (   
-        <div className='card-container' >
-            <img src={product.img} className='card-img-top'/>
-            <div className='card-body'>
-                <h5 className='card-title'>{product.title}</h5>
-                <p className='card-text'>
+        <div className='' >
+            <img src={product.img} className=''/>
+            <div className=''>
+                <h5 className=''>{product.title}</h5>
+                <p className=''>
                     $ <span>{product.price}</span>
                 </p>
                 <p>

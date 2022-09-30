@@ -7,9 +7,9 @@ export const ItemList = ({ productList }) => {
     
     return (
     <div className=''>
-        <div className=''>
+        <div className='d-flex flex-row'>
             {productList?.map((product) => (
-                <div className='col-8' key={product.id}>
+                <div className='col-xxl-3 col-lg-4 col-md-6 col-8' key={product.id}>
                     <div className=''>
                         <Item product={product}/>
                     </div>

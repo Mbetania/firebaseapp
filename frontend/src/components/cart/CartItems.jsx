@@ -1,10 +1,11 @@
 import React from 'react'
+import styles from '../../styles/cards/cards.module.sass'
 
 export const CartItems = ({ category, title, stock, price,removeProductCart, img,quantity, id }) => {
     return (
         <>
             <div>
-                <img src={img} />
+                <img src={img} className={`${styles.img}`}/>
             </div>
             <div>
                 <h3>{title}</h3>
