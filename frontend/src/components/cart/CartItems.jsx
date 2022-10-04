@@ -5,6 +5,7 @@ export const CartItems = ({ category, title, stock, price,removeProductCart, img
     return (
         <>
             <div>
+                as
                 <img src={img} className={`${styles.img}`}/>
             </div>
             <div>
