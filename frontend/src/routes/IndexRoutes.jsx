@@ -13,7 +13,7 @@ import { ThemeCurr } from '../hooks/ThemeContext'
 //trae la funcion creada en button, calbback saveProductsFirebase} from firebase
 export const IndexRoutes = () => {
   return (
-    <ThemeCurr>
+    // <ThemeCurr>
       <BrowserRouter id= 'light'>
       <CartCustomProvider>
       {/* <button onClick={saveProductsFirebase}>ALGO</button> */}
@@ -28,6 +28,6 @@ export const IndexRoutes = () => {
         </Routes>
       </CartCustomProvider>
       </BrowserRouter>
-    </ThemeCurr>
+    // </ThemeCurr>
   )
 }

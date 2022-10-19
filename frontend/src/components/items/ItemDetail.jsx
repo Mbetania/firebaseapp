@@ -40,7 +40,7 @@ export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => 
                         ? <Link to="/cart" className="btn btn-info my-2">Terminar Compra</Link>
                         : <ItemCount initial={1} stock={stock} onAdd={handleAdd} />
                 }
-                {/* <NavLink to='/cart'> Ir al carrito</NavLink> */}
+                <NavLink to='/cart'> Ir al carrito</NavLink>
             </div>
         </div>
     )
