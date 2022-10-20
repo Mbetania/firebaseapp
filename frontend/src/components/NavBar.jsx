@@ -7,7 +7,7 @@ import { CartWidget } from './cart/CartWidget'
 export const NavBar = () => {
     const { productsCart } = useContext(firebaseContext)
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4" >
+        <nav className="navbar navbar-expand-lg mb-4" >
             <Link to='/' className='fs-3 ubuntu navbar-brand'>fire<span className='text-primary'>base</span></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation" />
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
