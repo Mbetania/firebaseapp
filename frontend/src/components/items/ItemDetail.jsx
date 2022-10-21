@@ -25,7 +25,7 @@ export const ItemDetail = ({ id, title, price, stock, genre, img, product }) => 
     }
 
     return (
-        <div className='card d-flex align-items-center'>
+        <div className='align-items-center'>
             <div className={`mb-4 ${styles.cards}`}>
                 <img src={img} className={`${styles.img}`}/>
             </div>

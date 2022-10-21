@@ -1,25 +1,9 @@
-import { children } from "cheerio/lib/api/traversing";
-import { createContext, useState } from "react";
+import create from 'zustand'
 
-export const ThemeContext = createContext(null)
+const changeTheme = (set) => ({
+    dark: false,
+    toggleDarkTheme: (data) => set((state) => ({dark: data}))
+})
 
-export const ThemeProvider = ({ children }) => {
-    const [theme, setTheme] = useState('light')
-    
-
-    const toggleTheme = () => {
-        setTheme((curr) => (curr === 'light' ? 'dark' : 'light'))
-    }
-
-
-    return (
-        <ThemeContext.Provider
-            value={{
-                theme,
-                setTheme,
-                toggleTheme,
-            }}>
-            {children}
-        </ThemeContext.Provider>
-    )
-}
+const useToggleTheme = create(changeTheme)
+export default useToggleTheme

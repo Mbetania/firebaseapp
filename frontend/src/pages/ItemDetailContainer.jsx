@@ -61,7 +61,7 @@ export const ItemDetailContainer = () => {
 
 
     return (
-        <div>
+        <div className='d-flex justify-content-center'>
             {/* {product ? <>carregando o jogo...</> : */}
             <ItemDetail
                 product={product}

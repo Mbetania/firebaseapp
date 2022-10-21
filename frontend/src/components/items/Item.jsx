@@ -33,7 +33,7 @@ export const Item = ({ product }) => {
                             ) : (
                                 <div>
                                     <Link to={`/detail/${product.id}`}>
-                                        <button>Ver Detalle</button>
+                                        <button className='btn'>Ver Detalle</button>
                                     </Link>
                                 </div>
                             )}
