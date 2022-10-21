@@ -6,16 +6,14 @@ export const ItemList = ({ productList }) => {
     // // console.log('acaaaa')
     
     return (
-    <div className=''>
-        <div className='d-flex flex-row'>
+        <div className='d-flex flex-wrap justify-content-center align-items-start'>
             {productList?.map((product) => (
-                <div className='col-xxl-3 col-lg-4 col-md-6 col-8' key={product.id}>
-                    <div className=''>
+                <div className='' key={product.id}>
+                    <div className='item-container'>
                         <Item product={product}/>
                     </div>
                 </div>
             ))}
         </div>
-    </div>
     )
 }

@@ -70,7 +70,7 @@ export const ItemListContainer = ({ mesagge }) => {
 
     
     return (
-        <div className=''>
+        <div className='stock-container'>
             {loading  ? (
                 <RingLoader className='' color='#5189dd' loading={loading}  size={100} />
             ) : (

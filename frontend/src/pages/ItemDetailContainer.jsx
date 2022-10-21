@@ -5,13 +5,19 @@ import { db } from '../firebase'
 import { doc, getDocs, collection, getDoc } from "firebase/firestore"
 // import { getProductsById } from '../mocks/products'
 import { useParams } from 'react-router'
+import useToggleTheme from '../hooks/store'
 
 export const ItemDetailContainer = () => {
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(true)
 
+    const setUserId = useToggleTheme((state)=> state.logUser)
     const { id } = useParams()
 
+    useEffect(() => {
+        setUserId(id || 'unlogged')
+      }, [])
+      
     function getProductById(id) {
         return new Promise((resolve) => {
             const productCollectionRef = collection(db, 'items')
